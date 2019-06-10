@@ -17,6 +17,19 @@
 # https://github.com/engineyard/engineyard-serverside/blob/master/lib/engineyard-serverside/configuration.rb
 #
 defaults:
+  # Run migrations during deploy by default.
+  #
+  # When set to true, runs the migration_command (below) during deploy.
+  #
+  # This setting can be overridden for individual deployments using
+  # the command line options --migrate or --no-migrate.
+  #
+  migrate: true
+
+  # Default migration command to run when migrations are enabled.
+  #
+  migration_command: rake db:migrate
+  
   # Enables rails assets precompilation always and halts when the task fails.
   #
   # By default, assets are detected using app/assets and config/application.rb.
@@ -167,3 +180,5 @@ environments:
   # These options will only apply to the EXAMPLE_ENVIRONMENT environment.
   #EXAMPLE_ENVIRONMENT:
     #precompile_unchanged_assets: true
+  pault_testing:
+    migrate: false
